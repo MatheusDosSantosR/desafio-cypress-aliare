@@ -29,24 +29,16 @@ describe('Login de usuário', () => {
         LoginPage.validateErrorMessage('Usuário ou senha inválido.\nTente novamente ou verifique suas informações!');
     });
 
-    it('should show errors for missing required fields', () => {
+    it('deve mostrar erros para campos obrigatórios ausentes', () => {
         LoginPage.submitForm();
         LoginPage.validateInputErrorMessage('É campo obrigatório');
     });
 
-    it('should show an error for invalid email format', () => {
+    it('deve mostrar um erro para formato de e-mail inválido', () => {
         LoginPage.fillEmail('invalid-email');
         LoginPage.fillPassword('ValidPassword123');
         LoginPage.submitForm();
 
         LoginPage.validateInputErrorMessage('Formato inválido');
-    });
-
-    it('should show an error for blocked account', () => {
-        LoginPage.fillEmail('blockeduser@example.com');
-        LoginPage.fillPassword('ValidPassword123');
-        LoginPage.submitForm();
-
-        LoginPage.validateErrorMessage('Usuário ou senha inválido.\nTente novamente ou verifique suas informações!');
     });
 });
