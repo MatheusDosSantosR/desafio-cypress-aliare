@@ -6,7 +6,7 @@ describe('Registro de usuário', () => {
     });
 
     it('deve registrar-se com sucesso com dados válidos', () => {
-        RegisterPage.fillEmail('testuser@example.com');
+        RegisterPage.fillEmail('test@test.com');
         RegisterPage.fillName('Test User');
         RegisterPage.fillPassword('Test@123');
         RegisterPage.fillConfirmPassword('Test@123');
@@ -37,7 +37,7 @@ describe('Registro de usuário', () => {
 
     it('deve mostrar um erro para formato de e-mail inválido', () => {
         RegisterPage.fillName('Test User');
-        RegisterPage.fillEmail('invalid-email');
+        RegisterPage.fillEmail('email_errado.com');
         RegisterPage.fillPassword('Test@123');
         RegisterPage.fillConfirmPassword('Test@123');
         RegisterPage.submitForm();
