@@ -37,6 +37,7 @@ class LoginPage {
     validateSuccessMessageLogin() {
         this.elements.homeSuccessMessage().should('be.visible');
     }
+
 }
 
 export default new LoginPage();

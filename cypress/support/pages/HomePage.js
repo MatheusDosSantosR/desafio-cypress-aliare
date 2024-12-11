@@ -3,6 +3,9 @@ class HomePage {
     elements = {
         linkTransactions: () => cy.get('#btn-TRANSFERÊNCIA'),
         linkExtract: () => cy.get('#btn-EXTRATO'),
+        accountNumber: () => cy.get('#textAccountNumber > span'),
+        accountName: () => cy.get('#textName'),
+
     };
 
     // Métodos
@@ -12,6 +15,14 @@ class HomePage {
 
     goToExtract() {
         this.elements.linkExtract().click();
+    }
+
+    validateNameHome(name) {
+        this.elements.accountName().should('contain.text', `Olá ${name},`);
+    }
+
+    validateAccount(accountNumber) {
+        this.elements.accountNumber().should('contain.text', accountNumber);
     }
 
 }

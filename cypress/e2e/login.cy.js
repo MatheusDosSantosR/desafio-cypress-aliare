@@ -1,4 +1,5 @@
 import LoginPage from '../support/pages/LoginPage';
+import HomePage from '../support/pages/HomePage';
 
 describe('Login de usuário', () => {
     beforeEach(() => {
@@ -11,11 +12,13 @@ describe('Login de usuário', () => {
     });
 
     it('deve fazer login com sucesso com credenciais válidas', function () {
-        console.log(this.users);
+        const accountNumber = this.users[0].accountNumber + '-' + this.users[0].accountDigit;
         LoginPage.fillEmail(this.users[0].email);
         LoginPage.fillPassword(this.users[0].password);
         LoginPage.submitForm();
         LoginPage.validateSuccessMessageLogin();
+        HomePage.validateNameHome(this.users[0].name);
+        HomePage.validateAccount(accountNumber);
     });
 
     it('deve mostrar um erro para credenciais inválidas', () => {
@@ -39,7 +42,7 @@ describe('Login de usuário', () => {
         LoginPage.validateInputErrorMessage('Formato inválido');
     });
 
-    it.only('should show an error for blocked account', () => {
+    it('should show an error for blocked account', () => {
         LoginPage.fillEmail('blockeduser@example.com');
         LoginPage.fillPassword('ValidPassword123');
         LoginPage.submitForm();
